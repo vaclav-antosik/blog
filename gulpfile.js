@@ -13,7 +13,7 @@ var ssh = new SSH({
 
 gulp.task('deploy', function(done) {
 
-ssh.exec('git pull origin master', {
+ssh.exec('git pull', {
     out: function(stdout) {
         console.log(stdout);
     },
