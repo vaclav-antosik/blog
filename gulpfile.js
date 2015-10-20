@@ -7,36 +7,19 @@ var args = minimist(process.argv.slice(2));
 var ssh = new SSH({
     host: '104.41.201.75',
     user: 'ftpuser',
-    pass: 'kpjs.123',
-    baseDir:'c:\\!\\www\\blog'
+    pass: 'kpjs.123'
 });
 
 gulp.task('deploy', function(done) {
-
-ssh.exec('git pull', {
-    out: function(stdout) {
-        console.log(stdout);
-    },
-    err: function(stderr) {
-        console.log(stderr); 
-    },
-	exit: function(code) {
-        console.log("EXIT: " + code);
-    }
-})
-.exec('npm install', {
-    out: function(stdout) {
-        console.log(stdout);
-		done(null);
-		console.log("DONE");
-    },
-    err: function(stderr) {
-        console.log(stderr); 
-    },
-	exit: function(code) {
-        console.log("EXIT: " + code);
-    }
-})
-.start();
-
+    ssh.exec('powershell -File "deploy.ps1"', {
+        out: function(stdout) {
+            console.log(stdout);
+        },
+        err: function(stderr) {
+            console.log(stderr); 
+        },
+        exit: function(code) {
+            console.log("EXIT: " + code);
+        }
+    });
 });
