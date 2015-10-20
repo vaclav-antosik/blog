@@ -2,9 +2,4 @@ sudo: false
 language: node_js
 node_js:
 - '0.12'
-env:
-  global:
-  - FTP_ADDRESS=104.41.201.75
-  - FTP_USER=ftpuser
-  - FTP_PASSWORD=xx
 after_success: gulp deploy --address $FTP_ADDRESS --user $FTP_USER --password $FTP_PASSWORD
