@@ -24,7 +24,7 @@ ssh.exec('git pull origin master', {
         console.log("EXIT: " + code);
     }
 })
-.exec('npm install', {
+/*.exec('npm install', {
     out: function(stdout) {
         console.log(stdout);
 		done(null);
@@ -36,7 +36,7 @@ ssh.exec('git pull origin master', {
 	exit: function(code) {
         console.log("EXIT: " + code);
     }
-})
+})*/
 .start();
 
 });
