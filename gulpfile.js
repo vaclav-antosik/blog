@@ -5,14 +5,14 @@ var minimist = require('minimist');
 var args = minimist(process.argv.slice(2));
 
 var ssh = new SSH({
-    host: '104.41.201.75',
-    user: 'ftpuser',
-    pass: 'kpjs.123'
+    host: args.address,
+    user: args.user,
+    pass: args.password
 });
 
 gulp.task('deploy', function(done) {
 
-ssh.exec(/*'git pull'*/'powershell -file deploy.ps1', {
+ssh.exec('powershell -file deploy.ps1', {
     out: function(stdout) {
         console.log(stdout);
     },
@@ -23,19 +23,6 @@ ssh.exec(/*'git pull'*/'powershell -file deploy.ps1', {
         console.log("EXIT: " + code);
     }
 })
-/*.exec('npm install', {
-    out: function(stdout) {
-        console.log(stdout);
-		done(null);
-		console.log("DONE");
-    },
-    err: function(stderr) {
-        console.log(stderr); // this-does-not-exist: command not found
-    },
-	exit: function(code) {
-        console.log("EXIT: " + code);
-    }
-})*/
 .start();
 
 });
