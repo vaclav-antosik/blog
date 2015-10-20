@@ -11,15 +11,31 @@ var ssh = new SSH({
 });
 
 gulp.task('deploy', function(done) {
-    ssh.exec('powershell -File "deploy.ps1"', {
-        out: function(stdout) {
-            console.log(stdout);
-        },
-        err: function(stderr) {
-            console.log(stderr); 
-        },
-        exit: function(code) {
-            console.log("EXIT: " + code);
-        }
-    });
+
+ssh.exec(/*'git pull'*/'powershell -file deploy.ps1', {
+    out: function(stdout) {
+        console.log(stdout);
+    },
+    err: function(stderr) {
+        console.log(stderr); // this-does-not-exist: command not found
+    },
+	exit: function(code) {
+        console.log("EXIT: " + code);
+    }
+})
+/*.exec('npm install', {
+    out: function(stdout) {
+        console.log(stdout);
+		done(null);
+		console.log("DONE");
+    },
+    err: function(stderr) {
+        console.log(stderr); // this-does-not-exist: command not found
+    },
+	exit: function(code) {
+        console.log("EXIT: " + code);
+    }
+})*/
+.start();
+
 });
