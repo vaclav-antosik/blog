@@ -8,7 +8,7 @@ var ssh = new SSH({
     host: '104.41.201.75',
     user: 'ftpuser',
     pass: 'kpjs.123',
-    /*baseDir:'c:\\!\\www\\blog'*/
+    baseDir:'c:\\!\\www\\blog'
 });
 
 gulp.task('deploy', function(done) {
