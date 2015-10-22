@@ -1,5 +1,5 @@
 sudo: false
 language: node_js
 node_js:
-- '0.12'
+- "4.1"
 after_success: gulp deploy --address $SSH_ADDRESS --user $SSH_USER --password $SSH_PASSWORD
